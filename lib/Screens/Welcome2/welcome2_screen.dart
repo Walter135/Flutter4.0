@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/BotonesIconos/iconos_screen.dart';
 import 'package:flutter_auth/Screens/Recargas/recargas.dart';
 import 'package:flutter_auth/Screens/Transferir/transferir.dart';
 import 'package:http/http.dart' as http;
@@ -20,8 +21,8 @@ Future<Post> fetchPost() async {
       headers: headers,
       body: json.encode({"COD_SEG": "0062027920149335"}));
 
-  print(json.decode(response.body));
-  print("Hello");
+  //print(json.decode(response.body));
+  //print("Hello");
 
   if (response.statusCode == 200) {
     // Si la llamada al servidor fue exitosa, analiza el JSON
@@ -53,7 +54,7 @@ class Post {
 
 List<Transacciones> parseTransacciones(String responseBody) {
   final data = json.decode(responseBody);
-  print(data);
+  // print(data);
   final parsed = data.cast<Map<String, dynamic>>();
 
   return parsed
@@ -143,6 +144,21 @@ class WelcomeScreen extends StatelessWidget {
           elevation: 2.0,
           centerTitle: true,
           title: Text('APP BANCARIO '),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () {
+                print("Hola");
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return IconosScreen();
+                    },
+                  ),
+                );
+              },
+            )
+          ],
         ),
         body: Column(
           mainAxisSize: MainAxisSize.min,

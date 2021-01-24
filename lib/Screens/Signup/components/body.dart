@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Activate/activate_screen.dart';
+import 'package:flutter_auth/Screens/Block/block_screen.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Signup/components/background.dart';
 import 'package:flutter_auth/Screens/Signup/components/or_divider.dart';
@@ -36,7 +38,16 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
               text: "SIGNUP",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ActivateScreen();
+                    },
+                  ),
+                );
+              },
             ),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(
@@ -69,6 +80,19 @@ class Body extends StatelessWidget {
                   press: () {},
                 ),
               ],
+            ),
+            RoundedButton(
+              text: "Bloqueo de Tarjeta",
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return BlockScreen();
+                    },
+                  ),
+                );
+              },
             )
           ],
         ),
